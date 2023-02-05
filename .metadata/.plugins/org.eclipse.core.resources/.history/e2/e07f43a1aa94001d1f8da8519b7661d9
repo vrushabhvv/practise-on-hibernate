@@ -1,0 +1,75 @@
+package project1;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class EmDemo {
+
+	public static void main(String[] args) {
+		 SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		 Student student1=new Student();
+		 student1.setName("ramesh");
+		 student1.setId(1);
+		 student1.setCity("kanpur");
+		 
+		 Student student2=new Student();
+		 student2.setName("suresh");
+		 student2.setId(2);
+		 student2.setCity("delhi");
+		 
+		 Student student3=new Student();
+		 student3.setName("peter");
+		 student3.setId(3);
+		 student3.setCity("keral");
+		 
+		 Student student4=new Student();
+		 student4.setName("peter");
+		 student4.setId(4);
+		 student4.setCity("keral");
+		 
+		 Certificate certificate=new Certificate();
+		 certificate.setCourse("android");
+		 certificate.setDuration("1.5 month");
+		 
+		 Certificate certificate1=new Certificate();
+		 certificate1.setCourse("hibernate");
+		 certificate1.setDuration("1.5 month");
+		 
+		 Certificate certificate2=new Certificate();
+		 certificate2.setCourse("sql");
+		 certificate2.setDuration("1.5 month");
+		 
+		 Certificate certificate3=new Certificate();
+		 certificate3.setCourse("hibernate");
+		 certificate3.setDuration("1.5 month");
+		 
+		 student1.setCertificate(certificate);
+		 student2.setCertificate(certificate1);
+		 student3.setCertificate(certificate2);
+		 student4.setCertificate(certificate3);
+//		 System.out.println(student1);
+//		 System.out.println(student2);
+//		 System.out.println(student3);
+//		 System.out.println(student4);
+		 
+		 Session session = factory.openSession();
+		 Transaction tx = session.beginTransaction();
+		
+		 session.persist(student1);
+		 session.persist(student2);
+		 session.persist(student3);
+		 session.persist(student4);
+		 
+		 tx.commit();
+		 
+		 
+		 session.close();
+		 
+		 Session sessionanother =factory.openSession();
+		 
+
+	}
+
+}

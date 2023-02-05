@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+  
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+    
+  <hibernate-mapping>  
+  <class name="hibernateinheritance.IndianTeam" table="team_india" discriminator-value="staff">  
+  <id name="slnumber">  
+  <generator class="increment"></generator>  
+  </id>  
+  
+  <discriminator type="string" column="category"></discriminator>
+  
+  
+  <property name="firstName" column="first_name"></property>  
+  <property name="lastName" column="last_name"></property> 
+  
+  
+  
+  
+  <subclass name="hibernateinheritance.Batsman" discriminator-value="bat">    
+  <property name="battingHand" column="batting_hand"></property> 
+  <property name="highestScore" column="highest_score"></property>  
+  </subclass>  
+  
+  
+  
+  
+  
+   
+  <subclass name="hibernateinheritance.Bowler" discriminator-value="bowl">  
+  <property name="bowlingHand" column="bowling_hand"></property> 
+  <property name="bestFigure" column="best_figure"></property>  
+  </subclass> 
+   
+ 
+  
+  </class>  
+  </hibernate-mapping>  
